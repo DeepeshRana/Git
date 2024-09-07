@@ -1,0 +1,340 @@
+Source Code Repository tools(Version Control Software)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-> Multiple developers will work for project development
+-> Developers will work with multiple location
+-> All developers code should store at one place(Code Integration should be maintained)
+-> To integrate all the developers source code at one place will use "Source-Code" Repository software's.
+
+Advantage with Source Code 
+ -> All the developers can connect to repository server and can integrate the code.
+ -> Repository servers will provide monitored access
+	a. Who modified
+	b. When
+	c. Why
+	d. What
+
+Repository tools
+++++++++++++++++
+a. SVN(outdated)
+b. GitHub
+c. Bit Bucket
+
+Environment set up to Work with GitHub
+++++++++++++++++++++++++++++++++++++++
+ => Create account in www.gitHub.com
+ => Download and install git client software.
+ => Once git client is installed, right click on mouse and verify git options display
+   (If git client is displayed then git client installation is successful)
+
+
+Working with GitHub
++++++++++++++++++++
+=> Login into your GitHub account with your credentials.
+=> Create Repository in GitHub
+
+Note: Repository is used to store project source code, Every project will have one repository.
+
+=> When we create a repository, unique URL will be generated with Repository Name.
+=> All the developers will connect to repository using Repository URL
+
+=> We can create 2 types of Repositories
+	1. Public repository
+	2. Private repository
+
+=> Public Repository means everybody can access but we can choose who can modify our repository.
+
+=> Private Repository means we will choose who can see and modify our repository. 
+
+	Repo URL : https://github.com/NitinManjunathIT/01-Devops-App.git
+
+Working with Git Bash
++++++++++++++++++++++
+ -> Git Bash we can use as Git Client software to perform Git operations.
+ -> Download and install git client.
+ -> Right click on Mouse and choose "Open git Bash Here"
+ 
+git help :: It will display frequently used git commands.
+git help <cmd-name> : It will open documentation for given command.
+
+
+Configure Your Email and Name in GitBash with Commands
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ git config --global user.email "email id of github account"
+$ git config --global user.name  "username of github account".
+
+$ git init   : To initialize our folder as "Git working tree".
+
+$ git clone  : To clone git repository from GitHub.
+		syntax : $ git clone <Project-repo-url>
+
+$ git status : It will display stagged, un-stagged and un-tracked files
+		Syntax :: $ git status
+		
+		Stagged Files    : The Files which are added for commit
+		Un-Stagged Files : The Files which are modified but not added for commit
+		Un-Tracked Files : Newly created Files
+
+Note: To commit a files, we should go to Stagging Area.
+
+$ git add    : It is used to add Files to Staging Area.
+		Syntax :: $ git add FileName
+		       :: $ git add .
+
+$ git commit : It is used to commit stagged files to LocalRepository
+		Syntax :: $ git commit -m "reason to push"
+
+$ git push   : It is used to push the data from Git-LocalRepository to Central or RemoteRepository.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Working with GitHub to perform operations
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+a. Login with Github account and create a repository under public category
+b. Clone Repository to our folder using a command called
+	git clone <repo-url>
+c. Create a file to do some changes in the folder
+	touch Sample.java
+d. Now this Sample.java should be saved in the Remote Repository
+	git status
+	git add .
+	git commit -m "first commit"
+	git push
+	
+Note: If u r doing git push for the first time, it will ask for the password, give the password of github login then push will be
+      successfull.
+
+Note: By Default the github password will be stored in the system
+	search -> credentials manager -> windows credentials -> check for github account 
+	If we need to edit we can edit or if we want we can remove.
+
+
+==================================================
+Steps to commit Any Folder to Github Repository
+==================================================
+
+1) Create Maven Project(Developers work)
+
+2) Create GitHub Repository
+
+Note: After creating git repository, it will display set of commands to execute
+
+3) Open gitbash from project folder and execute below commands
+
+$ git init
+$ git add .
+$ git commit -m 'commit-msg'
+$ git branch -M main
+$ git remote add origin <repo-url>
+$ git push -u origin master
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+When we are working on one task suddenly we may get some other priority task.
+
+Usecase
+++++++++
+-> ager assigned task id : 101
+-> I am working on that task (i am in middle of the task)
+-> Managed told that stop the work for 101 and complete 102 on priority. 
+-> Once 102 is completed then resume your work on 101
+
+-> When manager asked me to start 102 task, i have already done few changes for 101 
+  (partially completed)
+  
+-> We can't push partial changes to repository because with our partial changes existing functionality may break.
+
+-> We can't delete our changes because we have spent few hours of time to implement those changes
+
+
+***************  In this scenario we will go for 'git stash' option *********************
+
+=> Git stash is used to save working tree changes to temporary location and make working tree clean.
+
+-> After priority work completed we can get stashed changes back using 'gitstash apply'
+
+Note: It is also possible to have many no of stash. To list all the stash we use
+	$ git stash list
+	
+     To get particular stash back we use the following command
+	$ git stash apply listNo
+
+============
+Git Branches
+============
+-> Branches are used to maintain separate code bases for our project
+
+-> In Git repository we can create multiple branches
+	main(master)
+	develop	
+	qa
+	release
+	research
+
+-> development team will integrate the code in 'develop' branch
+
+-> bug-fixing team will integrate the code in 'qa' branch
+
+-> R & D team will integrate the code in 'research' branch
+
+-> In github we can create branches(using gui of github.com)
+
+-> To clone particular branch in git repo we will use below command
+
+		$ git clone -b <branch-name> <repo-url>
+
+-> While cloning by default it will give main branch.
+
+-> To switch from one branch to another branch we use the following command
+		$ git checkout branchName 
+
+-> To display the branches available
+		$ git branch
+
+
+Sequence to demonstrate
+=======================
+Point to main branch , add one file, commit and push to main branch.
+navigate to research branch and see whether the file is present in research branch.
+
+Questions
+ a. What is Git branch?
+ b. Why do we need git branches?
+ c. How to create git branches?
+ d. How to clone particular branch?
+ e. How to switch from one branch to another branch?
+
+==============
+Branch Merging
+==============
+
+=> The process of merging changes from one branch to another branch is called as Branch merging
+
+=> We will use Pull Request for Branch Merging(this can be done from github.com)
+
+============================
+Steps to do branch merging
+============================
+
+1) Create feature branch from main branch
+
+2) clone feature branch 
+
+3) create new file in feature branch then commit and push to central repo
+
+4) Go to central repository then create pull request to merge feature branch changes to main branch
+
+Note: Once feature branch changes are merged to main branch then we can delete feature branch (if required)
+
+=========================
+What is .gitignore ?
+=========================
+
+-> This .gitignore is used to configure the files or folders which we want to ignore from our commits
+
+-> The files and folders which are not required to commit to central repository those things we can configure in .gitignore file
+
+Ex: In maven project, 'target' folder will be available which is not required to commit to central repository. This we can configure in .gitignore file.
+
+---------------------------------------.gitignore-------------------------------------------------------
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+=========================
+git merge vs git rebase
+==========================
+
+=> These commands are used to merge changes from one branch to another branch
+
+-> git merge will preserve commit history
+
+-> git rebase will not preserve that rebase history
+
+-> When we are working on particular sprint and we want to merge changes from one branch to another branch then we 
+   will use 'git merge' command
+
+-> Once sprint-1 is delivered then we want to take latest code of sprint-1 to start sprint-2 development. 
+   In this scenario we don't need commit history so we will use 'git rebase' command.
+
+	syntax : git merge branchName 
+		 git rebase branchName
+
+
+===========================
+What is git pull command 
+===========================
+
+-> pull command is used to take latest changes from repository to local
+
+-> When we want to make some changes to code, it is always recommended to take git pull first then start your changes.
+
+Note: When we execute 'git pull' there is a chance of getting conflicts. We need to resolve the conflict and we should push the code without conflicts.
+
+==================
+Git-Hub Lab Task
+==================
+1) Create Maven Web Application
+2) Add 'Spring-Core' dependency in project pom.xml file (www.mvnrepository.com)
+3) Package maven project as war file using maven goal
+4) Create Git repository in github / bitbucket (public repo)
+5) Push maven project into github repo using gitbash
+   (target folder shouldn't be commited, add this in .gitignore file)
+6) Make changes in pom.xml and push changes to github repo using git bash
+7) Create 'feature' branch in git repo from main branch
+8) Switch to feature branch from git bash
+9) Make changes in 'feature' branch pom.xml file 
+10) Push changes to feature branch
+11) Create pull request and merge 'feature' branch changes to 'main' branch and delete feature branch
+
+
+git push  vs git pull
+git clone vs git pull
+git fetch vs git pull
+git stash
+git merge vs git rebase
+
+What is GitHub tagging?
+ans. After few commit, if the code is ready to release then we need to go for tagging.
+     This tagging code will create a zip file for the previous commits we have done.
+
+eg: git tag :: show the tags created
+    git tag v1.1 : creates the tag
+    git push origin v1.1 : push the tag code to the central repository
+
+Note: After creating the tag if we push the tag to the repository, then when we can download the tag(.zip) file the project name will be .....v1.1
+    
+git diff   : To see the changes made in the workspace vs code present in the remote repository.
+git status : To see the status of working space changes.
+
+
+Note : Github can be integrated for all IDE's and also from Git GUI.
+
